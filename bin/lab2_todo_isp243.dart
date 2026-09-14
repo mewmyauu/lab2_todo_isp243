@@ -23,8 +23,8 @@ void addTodo(List<Todo> todos) {
     return;
   }
 
-  int newid = todos.isEmpty ? 1 : todos.last.id + 1;
-  todos.add(Todo(id: newid, title: input.trim()));
+  // int newid = todos.isEmpty ? 1 : todos.last.id + 1;
+  todos.add(Todo(title: input.trim()));
   print("Задача добавлена");
 }
 
@@ -90,19 +90,31 @@ void main() {
   List<Todo> todos = [];
   printmenu();
 
-  while(true) {
+  while (true) {
     stdout.write("> ");
     String? input = stdin.readLineSync();
     if (input == null) continue;
     String command = input.trim().toLowerCase();
     if (command.isEmpty) continue;
     switch (command) {
-      case 'add': addTodo(todos); break;
-      case 'list': listtodos(todos); break;
-      case 'done': completetodo(todos); break;
-      case 'delete': deletetodo(todos); break;
-      case 'exit': print("До свидания!"); return;
-      default: printmenu(); print("Неизвестная команда");
+      case 'add':
+        addTodo(todos);
+        break;
+      case 'list':
+        listtodos(todos);
+        break;
+      case 'done':
+        completetodo(todos);
+        break;
+      case 'delete':
+        deletetodo(todos);
+        break;
+      case 'exit':
+        print("До свидания!");
+        return;
+      default:
+        printmenu();
+        print("Неизвестная команда");
     }
   }
 }
